@@ -9,8 +9,91 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var articleOne = {
+    title:'amit\'s first article',
+    heading:'this is my first article',
+    date:'25-08-2017',
+    content:`<p>
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+            </p>
+                    
+            <p>
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+            </p>
+                    
+            <p>
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+                this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!this is so cool!!!
+            </p>`,
+    
+};
+
+function createTemplate(data){
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var htmlTemplate=`
+    <!DOCTYPE html>
+    <html>
+        
+        <head>
+            
+            <!-- don't play with this text below-->
+    		<meta charset="utf-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    		<!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    		<!-- jQuery library -->
+    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    		<!-- Latest compiled JavaScript -->
+    		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    		<!-- don't play with this text above -->
+    		<link href="/ui/style.css" rel="stylesheet" />
+            
+            <title>
+                ${title}
+            </title>
+            
+        </head>
+        
+        <body>
+            
+            <div class="container">
+                <div class=jumbotron>
+                    <a href="/">home</a>
+                    <hr/>
+                    <div class="text-center">
+                        <h1>
+                            ${heading}
+                        </h1>
+                    </div>
+                    
+                    <div>
+                        <blockquote>
+                            <footer class="pull-right">created on ${date}</footer>    
+                        </blockquote>
+                    </div>
+                    
+                    <hr/>
+                    <div class="text-primary">
+                       ${content}
+                    </div>
+                </div>
+            </div>
+            
+        </body>
+    </html>`;
+    return htmlTemplate
+    ;
+}
+
+
 app.get('/article1',function (req,res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
+   res.send(createtemplate(articleOne));
 });
 
 app.get('/article2',function (req,res) {
