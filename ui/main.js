@@ -6,15 +6,11 @@ element.innerHTML = 'I am amit and this is my web page!!';
 
 //changing the image style
 var img = document.getElementById('img');
-var count = 0;
+var imageLeft = 0;
+var moveRight = function(){
+    marginLeft = marginLeft + 10;
+    img.style.marginLeft = marginLeft + 'px';
+};
 img.onclick = function(){
-    if(count === 0){
-        img.style.marginLeft = '100px';
-        count = 1;
-    }
-    else{
-        img.style.marginRight  = '100px';
-        count = 0;
-    }
-    
+    var interval = setInterval(moveRight,50);
 };
