@@ -22,8 +22,6 @@ button.onclick = function(){
 };
 
 //submitname
-var nameInput = document.getElementById('name');
-var name = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function(){
   //make a request to the capture endpoint
@@ -46,6 +44,8 @@ submit.onclick = function(){
       }
       //else do nothing.
   };
+  var nameInput = document.getElementById('name');
+  var name = nameInput.value;
   request.open('GET','http://amitthakurashwani.imad.hasura-app.io/submit-name?name='+ name,true);
   request.send(null);
 };
