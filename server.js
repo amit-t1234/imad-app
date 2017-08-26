@@ -16,9 +16,9 @@ app.get('/counter', function (req, res){
 });
 
 var names = [];
-app.get('/submit-name/:name',function (req, res){
+app.get('/submit-name',function (req, res){
    //get the name from the request url
-   var name = req.params.name; //complex part
+   var name = req.query.name; //complex part
    names.push(name);
    
    //JSON = javascript object notation (basically converts any javascript file to string)
