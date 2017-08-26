@@ -7,7 +7,7 @@ element.innerHTML = 'I am amit and this is my web page!!';
 //changing the image style
 var img = document.getElementById('img');
 var imageLeft = 0;
-var moveRight = function(){
+function moveRight (){
     marginLeft = marginLeft + 10;
     img.style.marginLeft = marginLeft + 'px';
 };
