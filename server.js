@@ -15,6 +15,16 @@ app.get('/counter', function (req, res){
     res.send(counter.toString());
 });
 
+var names = [];
+app.get('/submit-name/:name',function (req, res){
+   //get the name from the request url
+   var name = req.params.name; //complex part
+   names.push(name);
+   
+   //JSON = javascript object notation (basically converts any javascript file to string)
+   res.send(JSON,stringify(names)); // complex part. Here JSON will help to convert the javascript array(names[]) to string
+});
+
 var articles = {
     article1: {
     title:'amit\'s first article',
