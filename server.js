@@ -157,7 +157,7 @@ app.get('/article/:articleName',function (req,res) {
            res.status(404).send('data not found');
        }
        else{
-           var articleData = result.row[0];
+           var articleData = result.rows[0];
            res.send(createTemplate(articleData));
        }
    });
