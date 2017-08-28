@@ -131,7 +131,7 @@ function createTemplate(data){
                     
                     <div>
                         <blockquote>
-                            <footer class="pull-right">created on ${date}</footer>    
+                            <footer class="pull-right">created on ${date.toDateString()}</footer>    
                         </blockquote>
                     </div>
                     
