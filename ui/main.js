@@ -8,7 +8,8 @@ submit.onclick = function(){
       if (request.readyState === XMLHttpRequest.DONE){
           //do some thing
           if(request.status === 200){
-                 //dispaly the list of name 
+                 //dispaly the list of name
+                 
                 alert('the user logged in successfully');
             }
             else if(request.status === 403){
@@ -20,6 +21,8 @@ submit.onclick = function(){
       }
       //else do nothing.
   };
+  
+  
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
   console.log(username);
