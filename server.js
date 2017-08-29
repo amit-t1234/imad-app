@@ -94,7 +94,7 @@ app.post('/login',function(req, res){
     });
 });
 
-app.get('/sessionId',function(req, res){
+app.get('/session-Id',function(req, res){
    if (req.session && req.session.auth && req.session.auth.userId) {
        alert('u are logged in : '+ req.session.auth.userId.toString());
    }
