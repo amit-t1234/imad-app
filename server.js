@@ -41,7 +41,7 @@ function hash(input,salt){
     return ['pbkdf2','10000',salt,hashed.toString('hex')].join('$');
 }
 
-app.post('/create_user',function(req, res){
+app.post('/create-user',function(req, res){
     
     var username = req.body.username;
     var password = req.body.password;
