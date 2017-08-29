@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var session = require('express-session')
 var config = {
     user: 'amitthakurashwani',
     database: 'amitthakurashwani',
@@ -15,6 +16,10 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret : 'someRandomValue',
+    cookie: {maxAge : 1000 * 60 * 60 * 24 * 30},
+}));
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -76,6 +81,9 @@ app.post('/login',function(req, res){
               var hashedPassword = hash(password, salt);
               
               if(hashedPassword === dbString){
+                  
+                   //set session
+                  req.session.auth = {userId : result.rows[0].id};
                   res.send('hello user!!!');
               }
               else{
@@ -84,6 +92,15 @@ app.post('/login',function(req, res){
           }
       }
     });
+});
+
+app.get('/sessionId',function(req, res){
+   if (req.session && req.session.auth && req.session.auth.userId) {
+       alert('u are logged in : '+ req.session.auth.userId.toString());
+   }
+   else{
+        alert('you are not logged in');   
+   }
 });
 
 app.get('/hash/:input',function(req,res){
