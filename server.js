@@ -94,13 +94,18 @@ app.post('/login',function(req, res){
     });
 });
 
-app.get('/session-Id',function(req, res){
+app.get('/user-login',function(req, res){
    if (req.session && req.session.auth && req.session.auth.userId) {
        res.send('u are logged in : '+ req.session.auth.userId.toString());
    }
    else{
         res.send('you are not logged in');   
    }
+});
+
+app.get('/logout',function(req,res){
+   delete req.session.auth;
+   res.send('you are successfully loggedout!!');
 });
 
 app.get('/hash/:input',function(req,res){
