@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
-var session = require('express-session')
+var session = require('express-session');
 var config = {
     user: 'amitthakurashwani',
     database: 'amitthakurashwani',
@@ -96,10 +96,10 @@ app.post('/login',function(req, res){
 
 app.get('/session-Id',function(req, res){
    if (req.session && req.session.auth && req.session.auth.userId) {
-       alert('u are logged in : '+ req.session.auth.userId.toString());
+       req.send('u are logged in : '+ req.session.auth.userId.toString());
    }
    else{
-        alert('you are not logged in');   
+        req.send('you are not logged in');   
    }
 });
 
