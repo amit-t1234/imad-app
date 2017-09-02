@@ -75,7 +75,7 @@
             }
             else{
                 var dbString = result.rows[0].password;
-                var salt = dbString.split('$')[2];
+                var salt = dbString.split($)[2];
                 var hashedPassword = hash(password, salt);
                 
                 if(hashedPassword === dbString){
